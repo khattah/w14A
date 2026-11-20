@@ -1,22 +1,13 @@
 
-<script setup lang="ts">
+<script setup >
 import TwoPartJoke from './TwoPartJoke.vue'
 
-type JokeMode = 'normal' | 'loud' | 'snake'
-
-interface Joke {
-  type: 'single' | 'twopart'
-  joke?: string
-  setup?: string
-  delivery?: string
-}
-
-defineProps<{
-  joke: Joke | null
-  mode: JokeMode
-  loading: boolean
-  error: string
-}>()
+defineProps({
+  joke: { type: Object, default: null },
+  mode: { type: String, default: 'normal' },
+  loading: Boolean,
+  error: { type: String, default: '' }
+})
 </script>
 
 <template>

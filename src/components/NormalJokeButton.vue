@@ -1,12 +1,10 @@
 
-<script setup lang="ts">
-defineProps<{
-  disabled?: boolean
-}>()
+<script setup >
+defineProps({
+  disabled: Boolean
+})
 
-const emit = defineEmits<{
-  (e: 'normal'): void
-}>()
+const emit = defineEmits(['normal'])
 </script>
 
 <template>

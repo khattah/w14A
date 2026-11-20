@@ -1,14 +1,12 @@
 
-<script setup lang="ts">
+<script setup >
 import { ref } from 'vue'
 
-defineProps<{
-  loading: boolean
-}>()
+defineProps({
+  loading: Boolean
+})
 
-const emit = defineEmits<{
-  (e: 'search', keyword: string): void
-}>()
+const emit = defineEmits(['search'])
 
 const keyword = ref('')
 

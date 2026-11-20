@@ -1,20 +1,16 @@
 
-<script setup lang="ts">
+<script setup >
 import { computed } from 'vue'
 
-type JokeMode = 'normal' | 'loud' | 'snake'
+const props = defineProps({
+  type: { type: String, required: true },
+  joke: { type: String, default: '' },
+  setup: { type: String, default: '' },
+  delivery: { type: String, default: '' },
+  mode: { type: String, default: 'normal' }
+})
 
-interface Props {
-  type: 'single' | 'twopart'
-  joke?: string
-  setup?: string
-  delivery?: string
-  mode: JokeMode
-}
-
-const props = defineProps<Props>()
-
-function formatJoke(text: string): string {
+function formatJoke(text) {
   if (props.mode === 'loud') {
     return text.toUpperCase()
   }

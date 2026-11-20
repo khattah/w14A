@@ -1,5 +1,5 @@
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
@@ -7,17 +7,8 @@ import NormalJokeButton from './components/NormalJokeButton.vue'
 import JokeDisplay from './components/JokeDisplay.vue'
 import JokeSearch from './components/JokeSearch.vue'
 
-type JokeMode = 'normal' | 'loud' | 'snake'
-
-interface Joke {
-  type: 'single' | 'twopart'
-  joke?: string
-  setup?: string
-  delivery?: string
-}
-
-const joke = ref<Joke | null>(null)
-const mode = ref<JokeMode>('normal')
+const joke = ref(null)
+const mode = ref('normal')
 const loading = ref(false)
 const error = ref('')
 
@@ -41,7 +32,7 @@ async function fetchJoke(keyword = '') {
       )
     }
 
-    joke.value = response.data as Joke
+    joke.value = response.data
     mode.value = 'normal'
   } catch (err) {
     joke.value = null
@@ -60,7 +51,7 @@ async function fetchJoke(keyword = '') {
   }
 }
 
-function changeMode(newMode: JokeMode) {
+function changeMode(newMode) {
   mode.value = newMode
   // No API call here!
 }
